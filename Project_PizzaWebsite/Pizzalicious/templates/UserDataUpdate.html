@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/style2.css">
+</head>
+
+<body>
+    <form id="form_update" action="" method="post">
+        <div class="main">
+            <div class="in">
+                <label class="lb">First Name</label>
+                <input type="text" name="firstName"><br>
+            </div>
+            <div class="in">
+                <label class="lb">Last Name</label>
+                <input type="text" name="lastName"><br>
+            </div>
+
+            <div class="in">
+                <label class="lb">Username</label>
+                <input type="text" name="username"><br>
+            </div>
+
+            <div class="in">
+                <label class="lb">Email</label>
+                <input type="text" name="email"><br>
+            </div>
+
+            <div class="in">
+                <label class="lb">Phone</label>
+                <input type="text" name="phone"><br>
+            </div>
+
+            <div class="in">
+                <label class="lb">Password</label>
+                <input type="text" name="password"><br>
+            </div>
+
+             <div class="in">
+                <label class="lb">Confirm the Password</label>
+                <input type="text" name="confirmPassword"><br>
+            </div>
+
+        </div>
+        <input style="margin-left: 250px;" class="btn btn-success" id="submit_update" type="button" name="submit"
+            value="Update">
+    </form>
+    <div class="in" style="margin: 50px;">
+        <label class="lb">Enter the Username you want to update :</label>
+        <input type="text" name="update_name" id="update_name">
+    </div>
+    <h3 id="response_update"></h3>
+    <script>
+        $(document).ready(function () {
+            // click on button submit
+            $("#submit_update").on('click', function () {
+                // send ajax
+                var formdata = $("#form_update").serializeArray();
+                console.log(formdata);
+                var data = {};
+                $(formdata).each(function (index, obj) {
+                    data[obj.name] = obj.value;
+                });
+                data = JSON.stringify(data);
+                let link = "/api2/";
+                link += document.getElementById("update_name").value;
+                $.ajax({
+                    url: link,
+                    type: "PUT",
+                    data: data,
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (result) {
+                        document.getElementById("response_update").innerHTML = "Your settings have been updated ";
+                        setTimeout(() => {
+                            document.getElementById("response_update").innerHTML = "";
+                        }, 3000);
+                    },
+                    error: function (xhr, resp, text) {
+                        console.log(xhr, resp, text);
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>

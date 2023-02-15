@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PIZZALICIOUS</title>
+    <link rel="stylesheet" href="/static/css/pizza.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <meta charset="UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <div class=""><div>
+        <div class="nav-container  bg-yellow " >
+          <img class="logo-size" src="/static/img/mylogo.png" alt="Logo" />
+        <div>
+            <ul class="nav-list">
+                <a href="index.html" class="my-btn button" role="button">HOME</a>
+                <a href="MenuVisitor.html" class="my-btn button" role="button">MENU</a>
+                <a href="About.html" class="my-btn button" role="button">CONTACT</a>
+                <a href="Order.html" class="my-btn button" role="button">TOOL</a>
+                <a href="login.html" class="my-btn button" role="button">LOGIN</a>
+          </ul>
+        </div>
+        </div>
+
+
+
+<h1 class="order-title"> Order as guest</h1>
+
+<div class="guest-order-bg">  </div>
+<main>
+
+<div class="section-card visible first">
+
+    <header>
+        <h1>Choose your size!</h1>
+    </header>
+
+    <p>
+        Small
+        <input type="radio" name="size" id="Small size" data-currency-iso="PKR" data-price="650">
+    </p>
+
+    <p>
+        Medium
+        <input type="radio" name="size" id="Medium size" data-price="899">
+    </p>
+
+
+    <p>
+        Large
+        <input type="radio" name="size" id="Large size" data-price="1450">
+    </p>
+
+
+
+
+    <button class="back">Back</button>
+    <button class="submit">Next</button>
+
+</div>
+
+<div class="section-card">
+    <header>
+        <h1>Nice to meat you!</h1>
+        <figcaption> The first meat item is complimentary. All additional meat items cost RS 50 each.</figcaption>
+    </header>
+    <p>
+        Pepperoni
+        <input type="checkbox" name="meat" id="Pepperoni">
+    </p>
+
+
+    <p>
+        Sausage
+        <input type="checkbox" name="meat" id="Sausage">
+    </p>
+
+
+    <p>
+        Canadian Bacon
+        <input type="checkbox" name="meat" id="Canadian Bacon">
+    </p>
+
+
+    <p>
+        Ground Beef
+        <input type="checkbox" name="meat" id="Ground Beef">
+    </p>
+
+
+    <p>
+        Anchovy
+        <input type="checkbox" name="meat" id="Anchovy">
+    </p>
+
+
+    <p>
+        Chicken
+        <input type="checkbox" name="meat" id="Chicken">
+    </p>
+        <button class="back">Back</button>
+        <button class="submit">Next</button>
+</div>
+
+ <div class="section-card">
+     <header>
+         <h1>How cheesy<br>are you?</h1>
+     </header>
+
+     <p>
+         Regular
+         <input type="radio" name="cheese" id="Regular cheese" data-price=" 25">
+     </p>
+
+     <p>
+         No cheese
+         <input type="radio" name="cheese" id="No cheese" data-price=" 0">
+     </p>
+
+     <p>
+         Extra Cheese
+         <input type="radio" name="cheese" id="Extra Cheese" data-price=" 50">
+    </p>
+
+     <button class="back">
+         Back
+     </button>
+
+     <button class="submit">
+         Next
+     </button>
+</div>
+
+<div class="section-card">
+    <header>
+        <h1>Everyone bites<br>the crust</h1>
+    </header>
+        <p>Plain Crust<input type="radio" name="crust" id="Plain Crust"></p>
+        <p>Garlic Crust<input type="radio" name="crust" id="Garlic Crust"></p>
+        <p>Cheese Crust<input data-price="3" type="radio" name="crust" id="Cheese Crust" ></p>
+        <p>Spicy Crust<input type="radio" name="crust" id="Spicy Crust"></p>
+        <p>Special Crust<input type="radio" name="crust" id="Special Crust"></p>
+        <button class="back">Back</button>
+        <button class="submit">Next</button>
+</div>
+<div class="section-card">
+    <header>
+        <h1>Our pizzas are saucy</h1>
+    </header>
+        <p>Marinara sauce<input type="radio" name="sauce" id="Marinara sauce"></p>
+        <p>White sauce<input type="radio" name="sauce" id="White sauce" ></p>
+        <p>Barbeque sauce<input type="radio" name="sauce" id="Barbeque sauce" ></p>
+        <p>No Sauce<input type="radio" name="sauce" id="No Sauce"></p>
+        <button class="back">Back</button>
+        <button class="submit">Next</button>
+</div>
+<div class="section-card last">
+
+
+        <header>
+            <h1>Always eat your veggies</h1>
+            The first type of veggie is complimentary. All additional veggie items cost RS 50 each.
+        </header>
+
+        <p>Tomatoes<input type="checkbox" name="veggies" id="Tomatoes"></p>
+        <p>Onions<input type="checkbox" name="veggies" id="Onions" ></p>
+        <p>Olives<input type="checkbox" name="veggies" id="Olives" ></p>
+        <p>Green Peppers<input type="checkbox" name="veggies" id="Green Peppers"></p>
+        <p>Mushrooms<input type="checkbox" name="veggies" id="Mushrooms"></p>
+        <p>Pineapple <input type="checkbox" name="veggies" id="Pineapple"></p>
+        <p>Spinach <input type="checkbox" name="veggies" id="Spinach"></p>
+        <p>Jalapeno <input type="checkbox" name="veggies" id="Jalapeno"></p>
+     <button class="back">Back</button>
+        <button class="submit">Next</button>
+</div>
+<div id="tally">
+    <h1>Your order</h1>
+</div>
+</main>
+
+
+
+
+
+
+    <center><div class="line1"></div></center>
+    <div >
+
+        <div class="footer">
+            <p>Please contact admins at admin.pizzalicious@gmail.com for any problems or questions about our resturant.</p>
+            DISCLAIMER: <em>PIZZALICIOUS</em> is an upcoming brand. All content used on this webiste will be functional soon and is under the rights of the developers.</p>
+            <p>&copy; 2023 PIZZALICIOUS. All Rights Reserved.</p>
+        </div>
+
+    </div>
+    <script src="/static/js/scripts.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

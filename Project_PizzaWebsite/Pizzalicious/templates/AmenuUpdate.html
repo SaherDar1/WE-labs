@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/style2.css">
+</head>
+
+<body>
+    <form id="form_update" action="" method="post">
+        <div class="main">
+            <div class="in">
+                <label class="lb">Name of the Pizza</label>
+                <input type="text" name="pizzaName"><br>
+            </div>
+            <div class="in">
+                <label class="lb">Nwe Description of the Pizza</label>
+                <input type="text" name="description"><br>
+            </div>
+
+            <div class="in">
+                <label class="lb">Ingredients in Pizza</label>
+                <input type="text" name="pizzaIngredients"><br>
+            </div>
+
+            <div class="in">
+                <label class="lb">Price for the small pizza</label>
+                <input type="text" name="smallPrice"><br>
+            </div>
+
+            <div class="in">
+                <label class="lb">Price for the medium pizza</label>
+                <input type="text" name="mediumPrice"><br>
+            </div>
+
+            <div class="in">
+                <label class="lb">Price for the large pizza</label>
+                <input type="text" name="largePrice"><br>
+            </div>
+
+
+
+        </div>
+        <input style="margin-left: 250px;" class="btn btn-success" id="submit_update" type="button" name="submit"
+            value="Update">
+    </form>
+    <div class="in" style="margin: 50px;">
+        <label class="lb">Enter the pizza name for which you want updation :</label>
+        <input type="text" name="update_name" id="update_name">
+    </div>
+    <h3 id="response_update"></h3>
+    <script>
+        $(document).ready(function () {
+            // click on button submit
+            $("#submit_update").on('click', function () {
+                // send ajax
+                var formdata = $("#form_update").serializeArray();
+                console.log(formdata);
+                var data = {};
+                $(formdata).each(function (index, obj) {
+                    data[obj.name] = obj.value;
+                });
+                data = JSON.stringify(data);
+                let link = "/api6/";
+                link += document.getElementById("update_name").value;
+                $.ajax({
+                    url: link,
+                    type: "PUT",
+                    data: data,
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (result) {
+                        document.getElementById("response_update").innerHTML = "Your pizza have been updated ";
+                        setTimeout(() => {
+                            document.getElementById("response_update").innerHTML = "Admin! run the pizza updation again";
+                        }, 3000);
+                    },
+                    error: function (xhr, resp, text) {
+                        console.log(xhr, resp, text);
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>

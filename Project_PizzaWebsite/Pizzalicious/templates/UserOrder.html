@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/style2.css">
+</head>
+
+<body>
+    <form id="form" action="" method="post">
+        <div class="main" style="width: 50%;">
+            Your Email: <input type="text" name="orderEmail"><br>
+            Pizza Size: <input type="text" name="pizzaSize"><br>
+            Flavour : <input type="text" name="flavour"><br>
+            Type of Crust:<input type="text" name="crustType"><br>
+            Ingredient 1 : <input type="text" name="ingredient1"><br>
+            Ingredient 2 : <input type="text" name="ingredient2"><br>
+            Address : <input type="text" name="address"><br>
+
+
+            <input style="height: 50px;width: 100px;" class="btn btn-success" id="submit" type="button" name="submit"
+                value="submit">
+        </div>
+    </form>
+    <h3 id="response"></h3>
+    <script>
+        $(document).ready(function () {
+            // click on button submit
+            $("#submit").on('click', function () {
+                // send ajax
+                var formdata = $("#form").serializeArray();
+                console.log(formdata);
+                var data = {};
+                $(formdata).each(function (index, obj) {
+                    data[obj.name] = obj.value;
+                });
+                data = JSON.stringify(data);
+                $.ajax({
+                    url: '/api4',
+                    type: "POST",
+                    data: data,
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (result) {
+                        document.getElementById("response").innerHTML = "Your order has been placed successfuly.";
+                        setTimeout(() => {
+                            document.getElementById("response").innerHTML = "";
+                        }, 3000);
+                    },
+                    error: function (xhr, resp, text) {
+                        console.log(xhr, resp, text);
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>

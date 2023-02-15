@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+     <link rel="stylesheet" href="../static/css/style2.css">
+</head>
+
+<body>
+    <table id="show" border="2">
+        <thead>
+            <tr>
+                <th>Pizza Name</th>
+                <th>Description</th>
+                <th>Ingredients</th>
+                <th>Small Size price</th>
+                <th>Medium Size price</th>
+                <th>Large Size price</th>
+            </tr>
+        </thead>
+
+
+    </table>
+    <input type="text" id="temp">
+    <button id="delete_btn" class="btn btn-success">Delete</button>
+    <h3 id="update_return_val"></h3>
+    <script>
+        function deleteFunction() {
+            let link = "/api6/";
+            link += document.getElementById("temp").value;
+            $.ajax({
+                type: "DELETE",
+                url: link,
+                success: function (result) {
+                    document.getElementById("update_return_val").innerHTML = "Pizza has been deleted from Menu";
+                    setTimeout(() => {
+                        document.getElementById("update_return_val").innerHTML = "Admin! relod this page again";
+                    }, 3000);
+                }
+            });
+        }
+        var myData;
+        $(document).ready(function (e) {
+            $.ajax({
+                type: "GET",
+                data: { 'no': '9999999' },
+                url: "/api5",
+                success: function (result) {
+                    myData = result
+                    if (myData != null || myData != "") {
+                        table = $('#show').DataTable({
+                            data: myData, destroy: true,
+                            columns: [
+                                { data: 'pizzaName' },
+                                { data: 'description' },
+                                { data: 'pizzaIngredients' },
+                                { data: 'smallPrice' },
+                                { data: 'mediumPrice' },
+                                { data: 'largePrice' }
+
+                            ]
+                        });
+                    }
+                }
+            });
+            $("#delete_btn").on('click', deleteFunction);
+        });
+    </script>
+
+</body>
+
+</html>
